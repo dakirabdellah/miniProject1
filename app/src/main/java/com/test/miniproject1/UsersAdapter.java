@@ -49,7 +49,7 @@ public class UsersAdapter extends BaseAdapter {
 
         tvUsersItmFullName.setText(users.get(position).fullName());
         tvUsersItmCity.setText(users.get(position).getCity());
-        tvUsersItmGendre.setText(users.get(position).getGender());
+        tvUsersItmGendre.setText(String.format("#%d",position+1));
         if (users.get(position).getGender().equalsIgnoreCase("Male")) {
             convertView.setBackgroundColor(Color.parseColor("#87CEFA")); // Light blue color
         } else if (users.get(position).getGender().equalsIgnoreCase("Female")) {
