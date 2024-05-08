@@ -27,6 +27,8 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
 
+        Log.e("TAG", Long.toString(System.currentTimeMillis()));
+
         btnUsersActLoadUsers = findViewById(R.id.btnUsersActLoadUsers);
         btnUsersActQuit = findViewById(R.id.btnUsersActQuit);
         lvUsersActUsers = findViewById(R.id.lvUsersActUsers);
