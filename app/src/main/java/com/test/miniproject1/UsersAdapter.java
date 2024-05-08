@@ -1,6 +1,7 @@
 package com.test.miniproject1;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,11 @@ public class UsersAdapter extends BaseAdapter {
         tvUsersItmFullName.setText(users.get(position).fullName());
         tvUsersItmCity.setText(users.get(position).getCity());
         tvUsersItmGendre.setText(users.get(position).getGender());
+        if (users.get(position).getGender().equalsIgnoreCase("Male")) {
+            convertView.setBackgroundColor(Color.parseColor("#87CEFA")); // Light blue color
+        } else if (users.get(position).getGender().equalsIgnoreCase("Female")) {
+            convertView.setBackgroundColor(Color.parseColor("#FFC0CB")); // Light pink color
+        }
 
         return convertView;
     }
