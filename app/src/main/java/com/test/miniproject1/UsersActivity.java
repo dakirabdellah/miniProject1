@@ -33,15 +33,13 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
 
         btnUsersActLoadUsers.setOnClickListener(this);
         btnUsersActQuit.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnUsersActLoadUsers) {
-            ArrayAdapter<User> adapter = new ArrayAdapter<>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    getUsers());
+            UsersAdapter adapter = new UsersAdapter(this, getUsers());
 
             lvUsersActUsers.setAdapter(adapter);
         } else if (v.getId() == R.id.btnUsersActQuit) {

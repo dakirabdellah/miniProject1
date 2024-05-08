@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +41,14 @@ public class UsersAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflater.inflate(R.layout.item_user, null);
+
+        TextView tvUsersItmFullName = convertView.findViewById(R.id.tvUsersItmFullName);
+        TextView tvUsersItmCity = convertView.findViewById(R.id.tvUsersItmCity);
+        TextView tvUsersItmGendre = convertView.findViewById(R.id.tvUsersItmGendre);
+
+        tvUsersItmFullName.setText(users.get(position).fullName());
+        tvUsersItmCity.setText(users.get(position).getCity());
+        tvUsersItmGendre.setText(users.get(position).getGender());
 
         return convertView;
     }
