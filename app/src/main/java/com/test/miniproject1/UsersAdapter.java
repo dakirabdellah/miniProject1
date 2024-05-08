@@ -1,6 +1,7 @@
 package com.test.miniproject1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,11 +54,14 @@ public class UsersAdapter extends BaseAdapter {
         tvUsersItmFullName.setText(user.fullName());
         tvUsersItmCity.setText(user.getCity());
         tvUsersItmDetails.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-
-            builder.setTitle(String.format("Details of user %d", position + 1))
-                    .setMessage(user.toString())
-                    .show();
+            Intent intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra("user", user.toString());
+            context.startActivity(intent);
+//            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//
+//            builder.setTitle(String.format("Details of user %d", position + 1))
+//                    .setMessage(user.toString())
+//                    .show();
         });
 
         return convertView;
