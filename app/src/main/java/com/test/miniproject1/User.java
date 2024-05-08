@@ -1,5 +1,9 @@
 package com.test.miniproject1;
 
+import androidx.annotation.NonNull;
+
+import java.util.Locale;
+
 public class User {
     private String firstName;
     private String lastName;
@@ -47,5 +51,11 @@ public class User {
 
     public String fullName() {
         return String.format("%s %s", firstName, lastName);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("%s\n%s\n%s", fullName(), gender, city);
     }
 }
