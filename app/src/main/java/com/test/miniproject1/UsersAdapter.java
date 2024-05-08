@@ -6,20 +6,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.ArrayList;
 
 public class UsersAdapter extends BaseAdapter {
-    ArrayList<User> users;
+    Context context;
     LayoutInflater inflater;
+    ArrayList<User> users;
 
     public UsersAdapter(Context context, ArrayList<User> users) {
         this.users = users;
-
+        this.context = context;
         inflater = LayoutInflater.from(context);
     }
 
@@ -40,15 +43,22 @@ public class UsersAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        User user = users.get(position);
         convertView = inflater.inflate(R.layout.item_user, null);
 
         TextView tvUsersItmFullName = convertView.findViewById(R.id.tvUsersItmFullName);
         TextView tvUsersItmCity = convertView.findViewById(R.id.tvUsersItmCity);
-        TextView tvUsersItmGendre = convertView.findViewById(R.id.tvUsersItmGendre);
+        Button tvUsersItmDetails = convertView.findViewById(R.id.tvUsersItmDetails);
 
-        tvUsersItmFullName.setText(users.get(position).fullName());
-        tvUsersItmCity.setText(users.get(position).getCity());
-        tvUsersItmGendre.setText(users.get(position).getGender());
+        tvUsersItmFullName.setText(user.fullName());
+        tvUsersItmCity.setText(user.getCity());
+        tvUsersItmDetails.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+            builder.setTitle(String.format("Details of user %d", position + 1))
+                    .setMessage(user.toString())
+                    .show();
+        });
 
         return convertView;
     }
